@@ -1,0 +1,77 @@
+## `Vec` Functions
+
+### Basic Operations
+
+- [ ] `Nil` : `Vec a 0`
+- [ ] `(::)` : `(x : a) -> (xs : Vec a n) -> Vec a (S n)`
+- [ ] `(!)` : `(xs : Vec a (S n)) -> Fin (S n) -> a`
+- [ ] `head` : `(xs : Vec a (S n)) -> a`
+- [ ] `tail` : `(xs : Vec a (S n)) -> Vec a n`
+
+### List Transformation
+
+- [x] `map` : `(f : a -> b) -> (xs : Vec a n) -> Vec b n`
+- [ ] `concat` : `(xss : Vec (Vec a n) m) -> Vec a (m * n)`
+- [ ] `zip` : `(xs : Vec a n) -> (ys : Vec b n) -> Vec (a, b) n`
+
+### List Reduction
+
+- [ ] `foldl` : `(f : a -> b -> a) -> (acc : a) -> (xs : Vec b n) -> a`
+- [ ] `foldr` : `(f : a -> b -> b) -> (z : b) -> (xs : Vec a n) -> b`
+- [ ] `scanl` : `(f : a -> b -> a) -> (x : a) -> (xs : Vec b n) -> Vec a (S n)`
+- [ ] `scanr` : `(f : a -> b -> b) -> (z : b) -> (xs : Vec a n) -> Vec b (S n)`
+
+### List Filtering and Partitioning
+
+- [x] `filter` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
+- [ ] `partition` : `(p : a -> Bool) -> (xs : Vec a n) -> (Vec a m, Vec a k)`
+
+### List Searching
+
+- [ ] `elem` : `(x : a) -> (xs : Vec a n) -> Bool`
+- [ ] `notElem` : `(x : a) -> (xs : Vec a n) -> Bool`
+- [ ] `find` : `(p : a -> Bool) -> (xs : Vec a n) -> Maybe a`
+- [ ] `findIndex` : `(p : a -> Bool) -> (xs : Vec a n) -> Maybe (Fin n)`
+
+### List Sorting and Grouping
+
+- [ ] `sort` : `(xs : Vec a n) -> Vec a n`
+- [ ] `sortBy` : `(cmp : a -> a -> Ordering) -> (xs : Vec a n) -> Vec a n`
+- [ ] `group` : `(xs : Vec a n) -> Vec (Vec a m) k`
+- [ ] `groupBy` : `(cmp : a -> a -> Bool) -> (xs : Vec a n) -> Vec (Vec a m) k`
+
+### List Concatenation
+
+- [ ] `append` : `(xs : Vec a n) -> (ys : Vec a m) -> Vec a (n + m)`
+- [ ] `reverse` : `(xs : Vec a n) -> Vec a n`
+
+### List Length and Size
+
+- [ ] `length` : `(xs : Vec a n) -> Nat`
+- [ ] `null` : `(xs : Vec a n) -> Bool`
+
+### List Indexing and Slicing
+
+- [ ] `take` : `(k : Nat) -> (xs : Vec a n) -> Vec a (min k n)`
+- [ ] `drop` : `(k : Nat) -> (xs : Vec a n) -> Vec a (n - k)`
+- [ ] `splitAt` : `(k : Nat) -> (xs : Vec a n) -> (Vec a k, Vec a (n - k))`
+- [ ] `takeWhile` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
+- [ ] `dropWhile` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
+- [ ] `span` : `(p : a -> Bool) -> (xs : Vec a n) -> (Vec a m, Vec a k)`
+
+### List Folds and Reduces
+
+- [ ] `sum` : `(xs : Vec Nat n) -> Nat`
+- [ ] `product` : `(xs : Vec Nat n) -> Nat`
+- [ ] `maximum` : `(xs : Vec Nat (S n)) -> Nat`
+- [ ] `minimum` : `(xs : Vec Nat (S n)) -> Nat`
+
+### List Range and Replication
+
+- [ ] `replicate` : `(k : Nat) -> (x : a) -> Vec a k`
+- [ ] `range` : `(from : Nat) -> (to : Nat) -> Vec Nat (to - from)`
+
+### List Conversion
+
+- [ ] `fromList` : `(xs : List a) -> Vec a n`
+- [ ] `toList` : `(xs : Vec a n) -> List a`
