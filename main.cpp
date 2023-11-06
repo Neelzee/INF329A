@@ -9,8 +9,20 @@ struct List
         return List<Xs..., Ys...>();
     }
     /// =========================================
-
 };
+
+/// =============== HEAD ================
+
+template<auto X, auto... Xs>
+constexpr auto map(List<X, Xs...>)
+{
+    return X;
+}
+
+/// =====================================
+
+
+
 
 /// =============== MAP =================
 template<typename F>
@@ -91,8 +103,9 @@ constexpr auto splitAt(List<Xs...> l) {
 /// ================= GET ================
 
 template<std::size_t n, auto X, auto... Xs>
-constexpr auto get(List<X, Xs...> l) {
+constexpr auto get(List<X, Xs...> l)
 requires (n <= sizeof...(Xs))
+{
     if constexpr (n == 0) {
         return X;
     } else {
@@ -108,9 +121,6 @@ requires (n <= sizeof...(Xs))
 int main() {
 
     std::cout << "Hello, World!" << std::endl;
-
-    constexpr auto L1 = List<1, 2, 3, 4, 5>();
-    constexpr auto L2 = splitAt<2>(L1);
 
     return 0;
 }

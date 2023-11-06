@@ -5,7 +5,7 @@
 - [ ] `Nil` : `Vec a 0`
 - [x] `(::)` : `(x : a) -> (xs : Vec a n) -> Vec a (S n)`
 - [x] `(!)` : `(xs : Vec a (S n)) -> Fin (S n) -> a`
-- [ ] `head` : `(xs : Vec a (S n)) -> a`
+- [x] `head` : `(xs : Vec a (S n)) -> a`
 - [ ] `tail` : `(xs : Vec a (S n)) -> Vec a n`
 
 ### List Transformation
