@@ -3,8 +3,8 @@
 ### Basic Operations
 
 - [ ] `Nil` : `Vec a 0`
-- [ ] `(::)` : `(x : a) -> (xs : Vec a n) -> Vec a (S n)`
-- [ ] `(!)` : `(xs : Vec a (S n)) -> Fin (S n) -> a`
+- [x] `(::)` : `(x : a) -> (xs : Vec a n) -> Vec a (S n)`
+- [x] `(!)` : `(xs : Vec a (S n)) -> Fin (S n) -> a`
 - [ ] `head` : `(xs : Vec a (S n)) -> a`
 - [ ] `tail` : `(xs : Vec a (S n)) -> Vec a n`
 
@@ -52,11 +52,11 @@
 
 ### List Indexing and Slicing
 
-- [ ] `take` : `(k : Nat) -> (xs : Vec a n) -> Vec a (min k n)`
-- [ ] `drop` : `(k : Nat) -> (xs : Vec a n) -> Vec a (n - k)`
-- [ ] `splitAt` : `(k : Nat) -> (xs : Vec a n) -> (Vec a k, Vec a (n - k))`
-- [ ] `takeWhile` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
-- [ ] `dropWhile` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
+- [x] `take` : `(k : Nat) -> (xs : Vec a n) -> Vec a (min k n)`
+- [x] `drop` : `(k : Nat) -> (xs : Vec a n) -> Vec a (n - k)`
+- [x] `splitAt` : `(k : Nat) -> (xs : Vec a n) -> (Vec a k, Vec a (n - k))`
+- [x] `takeWhile` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
+- [x] `dropWhile` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
 - [ ] `span` : `(p : a -> Bool) -> (xs : Vec a n) -> (Vec a m, Vec a k)`
 
 ### List Folds and Reduces
