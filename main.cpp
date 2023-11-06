@@ -33,6 +33,23 @@ constexpr auto tail(List<X, Xs...>)
 /// =====================================
 
 
+/// =============== ELEM ================
+
+template<auto Y>
+constexpr bool elem(List<>) {
+    return false;
+}
+
+template<auto Y, auto... X, auto Xs>
+constexpr bool elem(List<X, Xs...>) {
+    if (Y == X) {
+        return true;
+    } else {
+        return elem<Y>(List<Xs...>);
+    }
+}
+
+/// =====================================
 
 
 /// =============== MAP =================

@@ -6,7 +6,7 @@
 - [x] `(::)` : `(x : a) -> (xs : Vec a n) -> Vec a (S n)`
 - [x] `(!)` : `(xs : Vec a (S n)) -> Fin (S n) -> a`
 - [x] `head` : `(xs : Vec a (S n)) -> a`
-- [ ] `tail` : `(xs : Vec a (S n)) -> Vec a n`
+- [x] `tail` : `(xs : Vec a (S n)) -> Vec a n`
 
 ### List Transformation
 
@@ -28,7 +28,7 @@
 
 ### List Searching
 
-- [ ] `elem` : `(x : a) -> (xs : Vec a n) -> Bool`
+- [x] `elem` : `(x : a) -> (xs : Vec a n) -> Bool`
 - [ ] `notElem` : `(x : a) -> (xs : Vec a n) -> Bool`
 - [ ] `find` : `(p : a -> Bool) -> (xs : Vec a n) -> Maybe a`
 - [ ] `findIndex` : `(p : a -> Bool) -> (xs : Vec a n) -> Maybe (Fin n)`
