@@ -14,9 +14,20 @@ struct List
 /// =============== HEAD ================
 
 template<auto X, auto... Xs>
-constexpr auto map(List<X, Xs...>)
+constexpr auto head(List<X, Xs...>)
 {
     return X;
+}
+
+/// =====================================
+
+
+/// =============== TAIL ================
+
+template<auto X, auto... Xs>
+constexpr auto tail(List<X, Xs...>)
+{
+    return List<Xs...>();
 }
 
 /// =====================================
