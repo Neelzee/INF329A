@@ -1,0 +1,3 @@
+/home/nmf/Documents/INF329A/build/CMakeFiles/INF329A.dir
+/home/nmf/Documents/INF329A/build/CMakeFiles/edit_cache.dir
+/home/nmf/Documents/INF329A/build/CMakeFiles/rebuild_cache.dir

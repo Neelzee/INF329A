@@ -1,57 +1,5 @@
 #include <iostream>
 
-template<auto... Xs>
-struct List
-{
-    /// ================ ADD ===================
-    template<auto... Ys>
-    constexpr auto prepend(List<Ys...> L) const {
-        return List<Xs..., Ys...>();
-    }
-    /// =========================================
-};
-
-/// =============== HEAD ================
-
-template<auto X, auto... Xs>
-constexpr auto head(List<X, Xs...>)
-{
-    return X;
-}
-
-/// =====================================
-
-
-/// =============== TAIL ================
-
-template<auto X, auto... Xs>
-constexpr auto tail(List<X, Xs...>)
-{
-    return List<Xs...>();
-}
-
-/// =====================================
-
-
-/// =============== ELEM ================
-
-template<auto Y>
-constexpr bool elem(List<>) {
-    return false;
-}
-
-template<auto Y, auto... X, auto Xs>
-constexpr bool elem(List<X, Xs...>) {
-    if (Y == X) {
-        return true;
-    } else {
-        return elem<Y>(List<Xs...>);
-    }
-}
-
-/// =====================================
-
-
 /// =============== MAP =================
 template<typename F>
 constexpr auto map(List<> l, F _) {
