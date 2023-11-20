@@ -2,14 +2,8 @@
 
 #pragma once
 
-constexpr auto filter(List<> l, auto f);
+template<typename F>
+constexpr auto filter(List<> l, F f);
 
-template<auto X, auto... Xs>
-constexpr auto filter(List<X, Xs...> _, auto f)
-{
-    if constexpr (f(X)) {
-        return List<X>().prepend(filter(List<Xs...>(), f));
-    }
-    return filter(List<Xs...>(), f);
-}
-
+template<typename F, auto X, auto... Xs>
+constexpr auto filter(List<X, Xs...> _, F f);

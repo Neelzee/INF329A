@@ -4,3 +4,4 @@ project(INF329A)
 set(CMAKE_CXX_STANDARD 23)
 
 add_executable(INF329A main.cpp)
+

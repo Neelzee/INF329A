@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/nmf/Documents/INF329A/build",
-  "command": "/usr/bin/c++   -std=gnu++23 -o CMakeFiles/INF329A.dir/main.cpp.o -c /home/nmf/Documents/INF329A/main.cpp",
-  "file": "/home/nmf/Documents/INF329A/main.cpp",
-  "output": "CMakeFiles/INF329A.dir/main.cpp.o"
-}
-]
