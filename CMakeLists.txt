@@ -16,5 +16,7 @@ add_executable(INF329A main.cpp
         list_search.cpp
         list_sort.h
         list_sort.cpp
+        list_con.h
+        list_con.cpp
 )
 

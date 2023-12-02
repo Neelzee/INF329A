@@ -39,3 +39,11 @@ constexpr auto filter(List<X, Xs...> _, F f);
 
 template<typename F, auto... Xs>
 constexpr auto partition(List<Xs...> l, F f);
+
+template<std::size_t N, auto X>
+requires (N > 0)
+constexpr auto replicate();
+
+template<std::size_t f, std::size_t t, auto... Xs>
+requires (f >= 0 && f < t && t <= sizeof... (Xs))
+constexpr auto range(List<Xs...> l);

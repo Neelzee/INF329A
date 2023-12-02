@@ -24,6 +24,11 @@ concept Comparable = requires(T a, T b) {
     { a == b } -> std::convertible_to<bool>;
 };
 
+template<typename T>
+concept BoolConvertible = requires(T x) {
+    { static_cast<bool>(x) } -> std::convertible_to<bool>;
+};
+
 template<typename... Ts>
 concept AllComparable = (Comparable<Ts> && ...);
 

@@ -1,4 +1,5 @@
 #include "list.h"
+#include "list_red.h"
 #include <tuple>
 
 #pragma once
@@ -14,3 +15,7 @@ constexpr auto zip(List<Xs...> a, List<Ys...> b);
 
 template<auto... Xs, auto... Ys, auto... Zs>
 constexpr auto zip3(List<Xs...> a, List<Ys...> b, List<Zs...> c);
+
+template<auto... Xs>
+requires (BoolConvertible<decltype(Xs)> && ...)
+constexpr auto list_and();

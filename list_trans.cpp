@@ -29,5 +29,22 @@ constexpr auto zip3(List<Xs...> a, List<Ys...> b, List<Zs...> c) {
     }
 }
 
+template<auto... Xs>
+requires (BoolConvertible<decltype(Xs)> && ...)
+constexpr bool list_and(List<Xs...> l) {
+    return foldr([](auto X, auto Y){ return X && Y; }, true, l);
+}
 
 
+template<auto... Xs>
+requires (BoolConvertible<decltype(Xs)> && ...)
+constexpr bool list_or(List<Xs...> l) {
+    return foldr([](auto X, auto Y){ return X || Y; }, true, l);
+}
+
+
+template<auto... Xs>
+requires (BoolConvertible<decltype(Xs)> && ...)
+constexpr bool list_any(List<Xs...> l) {
+    return filter(l, [](auto X){ return X; }).length() != 0;
+}

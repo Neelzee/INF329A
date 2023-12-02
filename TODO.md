@@ -34,6 +34,8 @@
 - [x] `dropWhile` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
 - [x] `filter` : `(p : a -> Bool) -> (xs : Vec a n) -> Vec a m`
 - [x] `partition` : `(p : a -> Bool) -> (xs : Vec a n) -> (Vec a m, Vec a k)`
+- [x] `replicate` : `(k : Nat) -> (x : a) -> Vec a k`
+- [x] `range` : `(from : Nat) -> (to : Nat) -> Vec Nat (to - from)`
 
 ### List Searching
 
@@ -51,21 +53,35 @@
 
 ### List Indexing and Slicing
 
-- [ ] `span` : `(p : a -> Bool) -> (xs : Vec a n) -> (Vec a m, Vec a k)`
-
-### List Folds and Reduces
-
-- [ ] `sum` : `(xs : Vec Nat n) -> Nat`
-- [ ] `product` : `(xs : Vec Nat n) -> Nat`
-- [ ] `maximum` : `(xs : Vec Nat (S n)) -> Nat`
-- [ ] `minimum` : `(xs : Vec Nat (S n)) -> Nat`
 
 ### List Range and Replication
 
-- [ ] `replicate` : `(k : Nat) -> (x : a) -> Vec a k`
-- [ ] `range` : `(from : Nat) -> (to : Nat) -> Vec Nat (to - from)`
 
 ### List Conversion
 
-- [ ] `fromList` : `(xs : List a) -> Vec a n`
-- [ ] `toList` : `(xs : Vec a n) -> List a`
+- [x] `arrayToList` : TODO
+- [x] `listToArray` : TODO
+
+
+### NB
+
+- [ ] `break`
+- [ ] `lookup`
+- [ ] `unzip`
+- [ ] `unzip3`
+- [ ] `zipWith`
+- [ ] `zipWith3`
+- [ ] `null`
+- [ ] `concat`
+- [ ] `concatMap`
+
+### NB WTF?
+- [ ] `scanl`
+- [ ] `scanl1`
+- [ ] `scanr`
+- [ ] `scanr1`
+- [ ] `span` : `(p : a -> Bool) -> (xs : Vec a n) -> (Vec a m, Vec a k)`
+
+
+### TODO:
+- [ ] Change sorting to [prelude](https://hackage.haskell.org/package/base-4.12.0.0/docs/Prelude.html#g:13)

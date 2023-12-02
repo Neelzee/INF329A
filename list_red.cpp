@@ -1,3 +1,7 @@
+/**
+ * List Reductions
+ */
+
 #include "list_red.h"
 
 template<typename F>
@@ -102,4 +106,25 @@ constexpr auto partition(ListC<Xs...> l, F f) {
                     filter(l, f),
                     filter(l, [f](auto x){ return !f(x); })
             );
+}
+
+template<std::size_t N, auto X>
+requires (N > 0)
+constexpr auto replicate() {
+    return replicateHelper<N, X>(List<>());
+}
+
+template<std::size_t N, auto X, auto... Xs>
+constexpr auto replicateHelper(List<Xs...> l) {
+    if constexpr (N == 0) {
+        return l;
+    } else {
+        return replicateHelper<N - 1, X>(l.cons(X));
+    }
+}
+
+template<std::size_t f, std::size_t t, auto... Xs>
+requires (f >= 0 && f < t && t <= sizeof... (Xs))
+constexpr auto range(List<Xs...> l) {
+    return reverse(drop<t>(reverse(drop<f>(l))));
 }
