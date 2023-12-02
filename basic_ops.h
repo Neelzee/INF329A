@@ -18,4 +18,17 @@ constexpr auto head(List<X, Xs...> _);
 template<auto X, auto... Xs>
 constexpr auto tail(List<X, Xs...>);
 
+template<auto X>
+constexpr auto last(List<X>);
 
+template<auto... Xs>
+requires (0 <= sizeof...(Xs))
+constexpr auto last(List<Xs...> l);
+
+template<auto... Xs>
+constexpr auto init(List<Xs...> l);
+
+constexpr auto reverse(List<> l);
+
+template<auto X, auto... Xs>
+constexpr auto reverse(List<X, Xs...> l);
