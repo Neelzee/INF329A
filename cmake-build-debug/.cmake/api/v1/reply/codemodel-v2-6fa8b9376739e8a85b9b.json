@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "INF329A::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-INF329A-Debug-d568bee81c771eb339b4.json",
+					"jsonFile" : "target-INF329A-Debug-e184ee6d3042769bbd15.json",
 					"name" : "INF329A",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/nilsi/Documents/CLionProjects/INF329A/cmake-build-debug",
-		"source" : "C:/Users/nilsi/Documents/CLionProjects/INF329A"
+		"build" : "C:/Users/nilsi/Documents/INF329A/cmake-build-debug",
+		"source" : "C:/Users/nilsi/Documents/INF329A"
 	},
 	"version" : 
 	{

@@ -2,17 +2,19 @@
 
 ### Basic Operations
 
-- [ ] `Nil` : `Vec a 0`
+- [x] `Nil` : `Vec a 0`
 - [x] `(::)` : `(x : a) -> (xs : Vec a n) -> Vec a (S n)`
 - [x] `(!)` : `(xs : Vec a (S n)) -> Fin (S n) -> a`
 - [x] `head` : `(xs : Vec a (S n)) -> a`
 - [x] `tail` : `(xs : Vec a (S n)) -> Vec a n`
+- [ ] `last` : TODO
+- [ ] `init` : TODO
 
 ### List Transformation
 
 - [x] `map` : `(f : a -> b) -> (xs : Vec a n) -> Vec b n`
-- [ ] `concat` : `(xss : Vec (Vec a n) m) -> Vec a (m * n)`
-- [ ] `zip` : `(xs : Vec a n) -> (ys : Vec b n) -> Vec (a, b) n`
+- [x] `zip` : `(xs : Vec a n) -> (ys : Vec b n) -> Vec (a, b) n`
+- [x] `zip3` : `(xs : Vec a n) -> (ys : Vec b n) -> (zs : Vec c n) -> Vec (a, b, c) n`
 
 ### List Reduction
 
