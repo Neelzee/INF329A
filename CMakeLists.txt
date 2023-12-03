@@ -3,20 +3,23 @@ project(INF329A)
 
 set(CMAKE_CXX_STANDARD 23)
 
+include_directories(${PROJECT_SOURCE_DIR}/list_ops)
+
 add_executable(INF329A main.cpp
         list.h
-        basic_ops.h
-        basic_ops.cpp
-        list_trans.h
-        list_trans.cpp
-        list.cpp
-        list_red.h
-        list_red.cpp
-        list_search.h
-        list_search.cpp
-        list_sort.h
-        list_sort.cpp
-        list_con.h
-        list_con.cpp
+        conv/list_con.h
+        conv/list_con.cpp
+        list_ops/list_ops.h
+        list_ops/list_ops.cpp
+        sfolds/sfolds.h
+        subl/subl.h
+        search/searchl.h
+        zipping/zip.h
+        subl/subl.cpp
+        zipping/zip.cpp
+        sfolds/sfolds.cpp
+        scans/scans.h
+        scans/scans.cpp
+        search/searchl.cpp
 )
 

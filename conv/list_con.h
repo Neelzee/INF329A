@@ -1,4 +1,11 @@
-#include "list_con.h"
+/**
+ * List Conversion
+ */
+
+#include "../list.h"
+#include <vector>
+
+#pragma once
 
 template <typename T, std::size_t N>
 requires (N > 0)

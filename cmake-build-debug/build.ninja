@@ -52,50 +52,58 @@ build cmake_object_order_depends_target_INF329A: phony || CMakeFiles/INF329A.dir
 build CMakeFiles/INF329A.dir/main.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/main.cpp || cmake_object_order_depends_target_INF329A
   DEP_FILE = CMakeFiles\INF329A.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops
   OBJECT_DIR = CMakeFiles\INF329A.dir
   OBJECT_FILE_DIR = CMakeFiles\INF329A.dir
 
-build CMakeFiles/INF329A.dir/basic_ops.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/basic_ops.cpp || cmake_object_order_depends_target_INF329A
-  DEP_FILE = CMakeFiles\INF329A.dir\basic_ops.cpp.obj.d
+build CMakeFiles/INF329A.dir/conv/list_con.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/conv/list_con.cpp || cmake_object_order_depends_target_INF329A
+  DEP_FILE = CMakeFiles\INF329A.dir\conv\list_con.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops
   OBJECT_DIR = CMakeFiles\INF329A.dir
-  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir
+  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir\conv
 
-build CMakeFiles/INF329A.dir/list_trans.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/list_trans.cpp || cmake_object_order_depends_target_INF329A
-  DEP_FILE = CMakeFiles\INF329A.dir\list_trans.cpp.obj.d
+build CMakeFiles/INF329A.dir/list_ops/list_ops.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops/list_ops.cpp || cmake_object_order_depends_target_INF329A
+  DEP_FILE = CMakeFiles\INF329A.dir\list_ops\list_ops.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops
   OBJECT_DIR = CMakeFiles\INF329A.dir
-  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir
+  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir\list_ops
 
-build CMakeFiles/INF329A.dir/list.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/list.cpp || cmake_object_order_depends_target_INF329A
-  DEP_FILE = CMakeFiles\INF329A.dir\list.cpp.obj.d
+build CMakeFiles/INF329A.dir/subl/subl.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/subl/subl.cpp || cmake_object_order_depends_target_INF329A
+  DEP_FILE = CMakeFiles\INF329A.dir\subl\subl.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops
   OBJECT_DIR = CMakeFiles\INF329A.dir
-  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir
+  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir\subl
 
-build CMakeFiles/INF329A.dir/list_red.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/list_red.cpp || cmake_object_order_depends_target_INF329A
-  DEP_FILE = CMakeFiles\INF329A.dir\list_red.cpp.obj.d
+build CMakeFiles/INF329A.dir/zipping/zip.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/zipping/zip.cpp || cmake_object_order_depends_target_INF329A
+  DEP_FILE = CMakeFiles\INF329A.dir\zipping\zip.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops
   OBJECT_DIR = CMakeFiles\INF329A.dir
-  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir
+  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir\zipping
 
-build CMakeFiles/INF329A.dir/list_search.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/list_search.cpp || cmake_object_order_depends_target_INF329A
-  DEP_FILE = CMakeFiles\INF329A.dir\list_search.cpp.obj.d
+build CMakeFiles/INF329A.dir/sfolds/sfolds.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/sfolds/sfolds.cpp || cmake_object_order_depends_target_INF329A
+  DEP_FILE = CMakeFiles\INF329A.dir\sfolds\sfolds.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops
   OBJECT_DIR = CMakeFiles\INF329A.dir
-  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir
+  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir\sfolds
 
-build CMakeFiles/INF329A.dir/list_sort.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/list_sort.cpp || cmake_object_order_depends_target_INF329A
-  DEP_FILE = CMakeFiles\INF329A.dir\list_sort.cpp.obj.d
+build CMakeFiles/INF329A.dir/scans/scans.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/scans/scans.cpp || cmake_object_order_depends_target_INF329A
+  DEP_FILE = CMakeFiles\INF329A.dir\scans\scans.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops
   OBJECT_DIR = CMakeFiles\INF329A.dir
-  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir
+  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir\scans
 
-build CMakeFiles/INF329A.dir/list_con.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/list_con.cpp || cmake_object_order_depends_target_INF329A
-  DEP_FILE = CMakeFiles\INF329A.dir\list_con.cpp.obj.d
+build CMakeFiles/INF329A.dir/search/searchl.cpp.obj: CXX_COMPILER__INF329A_unscanned_Debug C$:/Users/nilsi/Documents/CLionProjects/INF329A/search/searchl.cpp || cmake_object_order_depends_target_INF329A
+  DEP_FILE = CMakeFiles\INF329A.dir\search\searchl.cpp.obj.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nilsi/Documents/CLionProjects/INF329A/list_ops
   OBJECT_DIR = CMakeFiles\INF329A.dir
-  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir
+  OBJECT_FILE_DIR = CMakeFiles\INF329A.dir\search
 
 
 # =============================================================================
@@ -105,7 +113,7 @@ build CMakeFiles/INF329A.dir/list_con.cpp.obj: CXX_COMPILER__INF329A_unscanned_D
 #############################################
 # Link the executable INF329A.exe
 
-build INF329A.exe: CXX_EXECUTABLE_LINKER__INF329A_Debug CMakeFiles/INF329A.dir/main.cpp.obj CMakeFiles/INF329A.dir/basic_ops.cpp.obj CMakeFiles/INF329A.dir/list_trans.cpp.obj CMakeFiles/INF329A.dir/list.cpp.obj CMakeFiles/INF329A.dir/list_red.cpp.obj CMakeFiles/INF329A.dir/list_search.cpp.obj CMakeFiles/INF329A.dir/list_sort.cpp.obj CMakeFiles/INF329A.dir/list_con.cpp.obj
+build INF329A.exe: CXX_EXECUTABLE_LINKER__INF329A_Debug CMakeFiles/INF329A.dir/main.cpp.obj CMakeFiles/INF329A.dir/conv/list_con.cpp.obj CMakeFiles/INF329A.dir/list_ops/list_ops.cpp.obj CMakeFiles/INF329A.dir/subl/subl.cpp.obj CMakeFiles/INF329A.dir/zipping/zip.cpp.obj CMakeFiles/INF329A.dir/sfolds/sfolds.cpp.obj CMakeFiles/INF329A.dir/scans/scans.cpp.obj CMakeFiles/INF329A.dir/search/searchl.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\INF329A.dir
