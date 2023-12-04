@@ -24,24 +24,6 @@ void test_map() {
     std::cout << "======================" << std::endl;
 }
 
-void test_take() {
-    auto l1 = List<1, 2, 3, 4, 5>();
-    auto l2 = take<0>(l1);
-    auto l3 = take<1>(l1);
-    auto l4 = take<4>(l1);
-    auto l5 = take<5>(l1);
-    //auto l6 = take<6>(l1);
-
-    std::cout << "====== Test Take =====" << std::endl;
-
-    std::cout << "Starting list: " << to_string(l1) << std::endl;
-    std::cout << "Take 0: " << to_string(l2) << std::endl;
-    std::cout << "Take 1: " << to_string(l3) << std::endl;
-    std::cout << "Take 4: " << to_string(l4) << std::endl;
-    std::cout << "Take 5: " << to_string(l5) << std::endl;
-
-    std::cout << "======================" << std::endl;
-}
 
 void test_filter() {
     auto l1 = List<1, 2, 3, 4, 5, 6>();
@@ -126,17 +108,7 @@ void get_test() {
     std::cout << "======================" << std::endl;
 }
 
-void test_init() {
-    auto l1 = List<1, 2, 3, 4>();
-    auto l2 = init(l1);
 
-    std::cout << "====== Test Init =====" << std::endl;
-
-    std::cout << "Starting list: " << to_string(l1) << std::endl;
-    std::cout << "Init: " << to_string(l2) << std::endl;
-
-    std::cout << "======================" << std::endl;
-}
 
 void reverse_test() {
     auto l1 = List<1, 2, 3, 4>();
@@ -149,15 +121,15 @@ void test_null() {
     static_assert(!null(List<1>()), "Should be false");
 }
 
-void test_partition() {
-    auto l1 = List<1, 2, 3, 4, 5, 6, 7, 8, 9, 10>();
-    auto [l2, l3] = partition(l1, [](auto x) { return x % 2 == 0; });
 
-    std::cout << "=== Test Partition ===" << std::endl;
 
-    std::cout << "Starting list: " << to_string(l1) << std::endl;
-    std::cout << "Should be evens" << to_string(l2) << std::endl;
-    std::cout << "Should be odds" << to_string(l3) << std::endl;
-
-    std::cout << "======================" << std::endl;
+void test_list_ops() {
+    test_map();
+    get_test();
+    test_filter();
+    test_head();
+    test_last();
+    test_tail();
+    reverse_test();
+    test_null();
 }

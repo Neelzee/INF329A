@@ -23,44 +23,22 @@ void test_list() {
     std::cout << "=======================";
 }
 
-void test_list_ops() {
-    test_map();
-    test_take();
-    get_test();
-    test_filter();
-    test_head();
-    test_last();
-    test_tail();
-    test_init();
-    reverse_test();
-    test_null();
-    test_partition();
-}
-
-void test_scans() {
-    std::cout << "####### TEST SCANS ########\n" << std::endl;
-
-    test_scanl();
-    test_scanl1();
-    test_scanr();
-    test_scanr1();
-
-    std::cout << "\n###########################\n" << std::endl;
-}
 
 int main() {
 
-    /**
-     std::cout << "##### TEST LIST METHODS #####\n" << std::endl;
+     std::cout << "##### TEST LIST METHODS #####" << std::endl;
     test_list();
-    std::cout << "\n###########################\n" << std::endl;
+    std::cout << "##############################" << std::endl;
 
-    std::cout << "###### TEST LIST OPS ######\n" << std::endl;
+    std::cout << "####### TEST LIST OPS ########" << std::endl;
     test_list_ops();
-    std::cout << "\n###########################" << std::endl;
-     */
+    std::cout << "##############################" << std::endl;
 
-    test_sort();
+    test_scans();
+
+    test_zip_main();
+
+    test_sfolds();
 
     return 0;
 }

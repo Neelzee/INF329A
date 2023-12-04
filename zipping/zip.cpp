@@ -23,3 +23,9 @@ void test_zip3() {
     //auto l4 = zip3(l1, l2, l3);
 
 }
+
+
+void test_zip_main() {
+    test_zip();
+    test_unzip();
+}

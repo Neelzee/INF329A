@@ -66,3 +66,5 @@ constexpr auto concat_map(List<Xs...> l, F f) {
 }
 
 void test_concat_map();
+
+void test_sfolds();

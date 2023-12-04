@@ -36,3 +36,10 @@ void test_scanr1() {
     std::cout << to_string(r) << std::endl;
     std::cout << "====================";
 }
+
+void test_scans() {
+    test_scanl();
+    test_scanl1();
+    test_scanr();
+    test_scanr1();
+}

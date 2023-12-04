@@ -1,7 +1,34 @@
 #include "../list.h"
+#include "../list_ops/list_ops.h"
 #include <tuple>
 
 #pragma once
+
+
+template<std::size_t>
+constexpr auto take(List<> l) {
+    return l;
+}
+
+template<std::size_t N, auto X, auto... Xs>
+requires (N <= (sizeof... (Xs) + 1))
+constexpr auto take(List<X, Xs...> l) {
+    if constexpr (N == 0) {
+        return List<>();
+    } else {
+        return List<X>().append(take<N - 1>(tail(l)));
+    }
+}
+
+void test_take();
+
+template<auto... Xs>
+requires (sizeof... (Xs) > 0)
+constexpr auto init(List<Xs...> l) {
+    return take<l.length() - 1>(l);
+}
+
+void test_init();
 
 
 template<std::size_t>
@@ -22,8 +49,18 @@ constexpr auto splitAt(List<Xs...> l) {
     return std::make_tuple(take<n>(l), drop<n>(l));
 }
 
+template<typename F, auto... Xs>
+requires (InvocableWith<F, decltype(Xs)> && ...)
+constexpr auto partition(List<Xs...> l, F f) {
+    return
+            std::make_tuple(
+                    filter(l, f),
+                    filter(l, [f](auto x){ return !f(x); })
+            );
+}
 
-constexpr auto sort(List<> l) {
+template<auto X>
+constexpr auto sort(List<X> l) {
     return l;
 }
 
@@ -32,7 +69,9 @@ requires (AllComparable<decltype(Xs)...> && (sizeof... (Xs) > 0))
 constexpr auto sort(List<Xs...> l) {
     auto pivot = head(l);
 
-    auto res = partition(l, [pivot](auto X){ return X < pivot; });
+    auto fn = [pivot](auto X){ return X > pivot; };
+
+    auto res = partition<decltype(fn)>(l, fn);
 
     auto sorted_less = sort(res.first);
     auto sorted_greater = sort(res.second);

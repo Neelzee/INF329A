@@ -57,3 +57,5 @@ void test_zip();
 void test_unzip();
 void test_zip_with();
 void test_zip3();
+
+void test_zip_main();

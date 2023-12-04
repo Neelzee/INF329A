@@ -42,3 +42,5 @@ constexpr auto scanr1(F f, List<Xs...> l) {
 }
 
 void test_scanr1();
+
+void test_scans();

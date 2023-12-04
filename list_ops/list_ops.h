@@ -3,7 +3,6 @@
  */
 
 #include "../list.h"
-#include "../subl/subl.h"
 #include <tuple>
 
 #pragma once
@@ -14,7 +13,7 @@ constexpr auto map(List<X>, F f) {
 }
 
 template<typename F, auto... Xs>
-requires (sizeof... (Xs) > 0)
+requires (sizeof... (Xs) > 0 && (InvocableWith<F, decltype(Xs)> && ...))
 constexpr auto map(List<Xs...> l, F f) {
     return List<f(head(l))>().append(map(tail(l), f));
 }
@@ -43,24 +42,6 @@ constexpr auto filter(List<X, Xs...>, F f) {
 
 void test_filter();
 
-
-template<std::size_t>
-constexpr auto take(List<> l) {
-    return l;
-}
-
-template<std::size_t N, auto X, auto... Xs>
-requires (N <= (sizeof... (Xs) + 1))
-constexpr auto take(List<X, Xs...> l) {
-    if constexpr (N == 0) {
-        return List<>();
-    } else {
-        return List<X>().append(take<N - 1>(tail(l)));
-    }
-}
-
-void test_take();
-
 template<auto X, auto... Xs>
 constexpr auto head(List<X, Xs...>) {
     return X;
@@ -88,13 +69,6 @@ constexpr auto tail(List<X, Xs...>) {
 
 void test_tail();
 
-template<auto... Xs>
-requires (sizeof... (Xs) > 0)
-constexpr auto init(List<Xs...> l) {
-    return take<l.length() - 1>(l);
-}
-
-void test_init();
 
 constexpr bool null(List<>) {
     return true;
@@ -131,13 +105,6 @@ constexpr auto reverse(List<X, Xs...> l) {
     return cons_append<X>(reverse(tail(l)));
 }
 
-template<typename F, auto... Xs>
-constexpr auto partition(List<Xs...> l, F f) {
-    return
-            std::make_tuple(
-                    filter(l, f),
-                    filter(l, [f](auto x){ return !f(x); })
-            );
-}
 
-void test_partition();
+
+void test_list_ops();

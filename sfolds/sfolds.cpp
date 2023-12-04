@@ -64,3 +64,13 @@ void test_concat_map() {
 
     std::cout << to_string(l6) << std::endl;
 }
+
+void test_sfolds() {
+    test_foldl();
+    test_foldr();
+    test_concat();
+    test_list_and();
+    test_list_or();
+    test_list_any();
+    test_concat_map();
+}
