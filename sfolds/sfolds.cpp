@@ -1,5 +1,6 @@
 #include "sfolds.h"
 #include <iostream>
+#include <string>
 
 void test_foldl() {
     auto l1 = List<1, 2, 3>();
@@ -23,6 +24,11 @@ void test_concat() {
     auto l3 = List<l1, l2>();
     auto l4 = concat(l3);
     auto l6 = concat(List<l1, l2, l>());
+
+    auto lst = List<true, false>();
+    auto lst2 = List<l1, l2>();
+
+    auto lst3 = concat(List<lst, lst2>());
 
     std::cout << to_string(l6) << std::endl;
 }
