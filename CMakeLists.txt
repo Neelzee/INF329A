@@ -21,5 +21,7 @@ add_executable(INF329A main.cpp
         scans/scans.h
         scans/scans.cpp
         search/searchl.cpp
+        div_1/div.h
+        div_1/div2.h
 )
 

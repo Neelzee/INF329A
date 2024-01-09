@@ -4,32 +4,36 @@
 
 #pragma once
 
+consteval bool is_unityped() { return true; }
+
+consteval bool is_unityped(auto) { return true; }
+
+consteval bool is_unityped(auto X, auto... Xs) { return (std::is_same_v<decltype(X), decltype(Xs)> && ...); }
+
 template<auto... Xs>
-struct List
-{
+struct List {
     template<auto... Ys>
     constexpr auto prepend(List<Ys...>) const {
-        return List<Ys..., Xs...>();
+      return List<Ys..., Xs...>();
     }
 
     constexpr auto prepend(List<>) const {
-        return List<Xs...>();
+      return List<Xs...>();
     }
 
     template<auto... Ys>
     constexpr auto append(List<Ys...> L) const {
-        return L.prepend(List<Xs...>());
+      return L.prepend(List<Xs...>());
     }
 
     constexpr auto append(List<> L) const {
-        return List<Xs...>();
+      return List<Xs...>();
     }
 
     constexpr std::size_t length() const {
-        return sizeof... (Xs);
+      return sizeof... (Xs);
     }
 };
-
 
 
 // Concept to check if F is invocable with a specific argument type
@@ -38,16 +42,16 @@ concept InvocableWith = std::is_invocable_r_v<bool, F, Arg>;
 
 template<typename T>
 concept Comparable = requires(T a, T b) {
-    { a < b } -> std::convertible_to<bool>;
-    { a <= b } -> std::convertible_to<bool>;
-    { a > b } -> std::convertible_to<bool>;
-    { a >= b } -> std::convertible_to<bool>;
-    { a == b } -> std::convertible_to<bool>;
+  { a < b } -> std::convertible_to<bool>;
+  { a <= b } -> std::convertible_to<bool>;
+  { a > b } -> std::convertible_to<bool>;
+  { a >= b } -> std::convertible_to<bool>;
+  { a == b } -> std::convertible_to<bool>;
 };
 
 template<typename T>
 concept BoolConvertible = requires(T x) {
-    { static_cast<bool>(x) } -> std::convertible_to<bool>;
+  { static_cast<bool>(x) } -> std::convertible_to<bool>;
 };
 
 template<typename T>
@@ -59,29 +63,29 @@ concept AllComparable = (Comparable<Ts> && ...);
 
 
 constexpr std::string to_string(List<>) {
-    return "<>";
+  return "<>";
 }
 
 template<auto X>
 constexpr std::string to_string(List<X>) {
-    return ("[ " + std::to_string(X) + " ]");
+  return ("[ " + std::to_string(X) + " ]");
 }
 
 template<auto X, auto... Xs>
 requires (IsNumeric<decltype(X)> && (IsNumeric<decltype(Xs)> && ...))
 constexpr std::string to_string(List<X, Xs...>) {
-    std::string pm = (... + (std::to_string(Xs) + ", "));
-    pm.pop_back();
-    pm.pop_back();
-    return ("< " + std::to_string(X) + ", " + pm +  " >");
+  std::string pm = (... + (std::to_string(Xs) + ", "));
+  pm.pop_back();
+  pm.pop_back();
+  return ("< " + std::to_string(X) + ", " + pm + " >");
 }
 
 template<auto X, auto... Xs>
 constexpr auto cons(List<Xs...>) {
-    return List<X, Xs...>();
+  return List<X, Xs...>();
 }
 
 template<auto X, auto... Xs>
-constexpr auto cons_append(List<Xs...>)  {
-    return List<Xs...>().append(List<X>());
+constexpr auto cons_append(List<Xs...>) {
+  return List<Xs...>().append(List<X>());
 }
