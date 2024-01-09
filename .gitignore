@@ -37,3 +37,4 @@ build
 
 cmake-build-debug
 .cache
+/cmake-build-debug/
