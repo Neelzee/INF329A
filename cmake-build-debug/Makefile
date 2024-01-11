@@ -152,6 +152,30 @@ conv/list_con.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\INF329A.dir\build.make CMakeFiles/INF329A.dir/conv/list_con.cpp.s
 .PHONY : conv/list_con.cpp.s
 
+div_1/div_test.obj: div_1/div_test.cpp.obj
+.PHONY : div_1/div_test.obj
+
+# target to build an object file
+div_1/div_test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\INF329A.dir\build.make CMakeFiles/INF329A.dir/div_1/div_test.cpp.obj
+.PHONY : div_1/div_test.cpp.obj
+
+div_1/div_test.i: div_1/div_test.cpp.i
+.PHONY : div_1/div_test.i
+
+# target to preprocess a source file
+div_1/div_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\INF329A.dir\build.make CMakeFiles/INF329A.dir/div_1/div_test.cpp.i
+.PHONY : div_1/div_test.cpp.i
+
+div_1/div_test.s: div_1/div_test.cpp.s
+.PHONY : div_1/div_test.s
+
+# target to generate assembly for a file
+div_1/div_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\INF329A.dir\build.make CMakeFiles/INF329A.dir/div_1/div_test.cpp.s
+.PHONY : div_1/div_test.cpp.s
+
 list_ops/list_ops.obj: list_ops/list_ops.cpp.obj
 .PHONY : list_ops/list_ops.obj
 
@@ -332,6 +356,9 @@ help:
 	@echo ... conv/list_con.obj
 	@echo ... conv/list_con.i
 	@echo ... conv/list_con.s
+	@echo ... div_1/div_test.obj
+	@echo ... div_1/div_test.i
+	@echo ... div_1/div_test.s
 	@echo ... list_ops/list_ops.obj
 	@echo ... list_ops/list_ops.i
 	@echo ... list_ops/list_ops.s

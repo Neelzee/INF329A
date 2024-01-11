@@ -23,5 +23,6 @@ add_executable(INF329A main.cpp
         search/searchl.cpp
         div_1/div.h
         div_1/div2.h
+        div_1/div_test.cpp
 )
 

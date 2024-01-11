@@ -5,34 +5,37 @@
 
 template<auto X, auto... Xs>
 requires (is_unityped(X, Xs...))
-constexpr auto max(List<Xs...> l) {
-  return max_helper(l, X);
+constexpr auto list_max(List<X, Xs...> l) {
+  return max_helper<X>(l);
 }
 
-template<auto X>
-constexpr auto max_helper(List<X> l, auto m) {
-  if constexpr (X > m) {
+void max_test();
+
+template<auto M, auto X>
+constexpr auto max_helper(List<X>) {
+  if constexpr (X > M) {
     return X;
   } else {
-    return m;
+    return M;
   }
 }
 
-template<auto X, auto... Xs>
-constexpr auto max_helper(List<X, Xs...> l, auto m) {
-  if constexpr (X > m) {
-    return max_helper(l, X);
+template<auto M, auto X, auto... Xs>
+constexpr auto max_helper(List<X, Xs...> l) {
+  if constexpr (X > M) {
+    return max_helper<X>(l);
   } else {
-    return max_helper(l, m);
+    return max_helper<M>(l);
   }
 }
-
 
 template<auto X, auto... Xs>
 requires (is_unityped(X, Xs...))
-constexpr auto min(List<Xs...> l) {
+constexpr auto list_min(List<Xs...> l) {
   return min_helper(l, X);
 }
+
+void min_test();
 
 template<auto X>
 constexpr auto min_helper(List<X> l, auto m) {
@@ -54,12 +57,16 @@ constexpr auto min_helper(List<X, Xs...> l, auto m) {
 
 template<auto... Xs>
 requires (is_unityped(Xs...) && 0 < sizeof... (Xs))
-constexpr auto sum(List<Xs...> l) {
-  return foldl([](auto sum, auto x) { return sum + x; }, l);
+constexpr auto list_sum(List<Xs...> l) {
+  return foldl([](auto sum, auto x) { return sum + x; }, 0, l);
 }
+
+void sum_test();
 
 template<auto... Xs>
 requires (is_unityped(Xs...) && 0 < sizeof... (Xs))
-constexpr auto product(List<Xs...> l) {
-  return foldl([](auto sum, auto x) { return sum * x; }, l);
+constexpr auto list_product(List<Xs...> l) {
+  return foldl([](auto sum, auto x) { return sum * x; }, 1, l);
 }
+
+void product_test();
