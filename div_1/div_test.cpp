@@ -4,7 +4,7 @@
 
 void max_test() {
   auto l1 = List<1, 2, 3>();
-  auto res = list_max(l1);
+  //auto res = list_max(l1);
 }
 
 void min_test() {

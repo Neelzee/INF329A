@@ -11,7 +11,7 @@ constexpr auto take(List<> l) {
 }
 
 template<std::size_t N, auto X, auto... Xs>
-requires (N <= (sizeof... (Xs) + 1))
+requires (N <= (sizeof... (Xs) + 1) && is_unityped(X, Xs...))
 constexpr auto take(List<X, Xs...> l) {
   if constexpr (N == 0) {
     return List<>();
@@ -23,7 +23,7 @@ constexpr auto take(List<X, Xs...> l) {
 void test_take();
 
 template<auto... Xs>
-requires (sizeof... (Xs) > 0)
+requires (sizeof... (Xs) > 0 && is_unityped(Xs...))
 constexpr auto init(List<Xs...> l) {
   return take<l.length() - 1>(l);
 }
@@ -35,7 +35,7 @@ template<std::size_t>
 constexpr auto drop(List<> l) { return l; }
 
 template<std::size_t n, auto X, auto... Xs>
-requires (n <= sizeof...(Xs))
+requires (n <= sizeof...(Xs) && is_unityped(X, Xs...))
 constexpr auto drop(List<X, Xs...> l) {
   if constexpr (n == 0) {
     return l;
@@ -45,12 +45,13 @@ constexpr auto drop(List<X, Xs...> l) {
 }
 
 template<std::size_t n, auto... Xs>
+requires (is_unityped(Xs...))
 constexpr auto splitAt(List<Xs...> l) {
   return std::make_tuple(take<n>(l), drop<n>(l));
 }
 
-template<typename F, auto... Xs> requires (InvocableWith<F, decltype(Xs)> && ...)
-
+template<typename F, auto... Xs>
+requires ((InvocableWith<F, decltype(Xs)> && ...) && is_unityped(Xs...))
 constexpr auto partition(List<Xs...> l, F f) {
   return
           std::make_tuple(
@@ -65,13 +66,13 @@ constexpr auto sort(List<X> l) {
 }
 
 template<auto... Xs>
-requires (AllComparable<decltype(Xs)...> && (sizeof... (Xs) > 0))
+requires (AllComparable<decltype(Xs)...> && (sizeof... (Xs) > 0) && is_unityped(Xs...))
 constexpr auto sort(List<Xs...> l) {
   auto pivot = head(l);
 
   auto fn = [pivot](auto X) { return X > pivot; };
 
-  auto res = partition < decltype(fn) > (l, fn);
+  auto res = partition<decltype(fn)>(l, fn);
 
   auto sorted_less = sort(res.first);
   auto sorted_greater = sort(res.second);
@@ -85,14 +86,14 @@ constexpr auto sortBy(List<> l, F) {
 }
 
 template<typename F, auto... Xs>
-requires AllComparable<decltype(Xs)...>
+requires (AllComparable<decltype(Xs)...> && is_unityped(Xs...))
 constexpr auto sortBy(List<Xs...> l, F f) {
   if constexpr (l.length() <= 1) {
     return l;
   } else {
     auto [less, greater] = partition(l, f);
 
-    return sortBy(less, f).append(sortBy(greater, f));
+    return sortBy<F>(less, f).append(sortBy(greater, f));
   }
 }
 
@@ -101,19 +102,19 @@ constexpr auto unique(List<> l) {
 }
 
 template<auto... Xs>
-requires AllComparable<decltype(Xs)...>
+requires (AllComparable<decltype(Xs)...> && is_unityped(Xs...))
 constexpr auto unique(List<Xs...> l) {
   return uniqueHelper(List<>(), l);
 }
 
 template<auto... Xs>
-requires AllComparable<decltype(Xs)...>
+requires (AllComparable<decltype(Xs)...> && is_unityped(Xs...))
 constexpr auto uniqueHelper(List<Xs...> l, List<>) {
   return l;
 }
 
 template<auto... Xs, auto... Ys>
-requires AllComparable<decltype(Xs)...>
+requires (AllComparable<decltype(Xs)...> && is_unityped(Xs..., Ys...))
 constexpr auto uniqueHelper(List<Xs...> seen, List<Ys...> remainder) {
   if constexpr (elem(seen, head(remainder))) {
     return uniqueHelper(seen, tail(remainder));
@@ -128,21 +129,21 @@ constexpr auto group(List<> l) {
 }
 
 template<auto... Xs>
-requires AllComparable<decltype(Xs)...>
+requires (AllComparable<decltype(Xs)...> && is_unityped(Xs...))
 constexpr auto group(List<Xs...> l) {
   auto ul = unique(l);
   return groupHelper(ul, l);
 }
 
 template<auto... Xs, auto... Ys>
-requires ((AllComparable<decltype(Xs)...>) && (AllComparable<decltype(Ys)...>) && 1 == sizeof... (Xs))
+requires ((AllComparable<decltype(Xs)...>) && (AllComparable<decltype(Ys)...>) && 1 == sizeof... (Xs) && is_unityped(Xs..., Ys...))
 constexpr auto groupHelper(List<Xs...> ul, List<Ys...> l) {
   auto X = head(ul);
   return std::make_tuple(filter(l, [X](auto y) { return y == X; }));
 }
 
 template<auto... Xs, auto... Ys>
-requires ((AllComparable<decltype(Xs)...>) && (AllComparable<decltype(Ys)...>))
+requires ((AllComparable<decltype(Xs)...>) && (AllComparable<decltype(Ys)...>) && is_unityped(Xs..., Ys...))
 constexpr auto groupHelper(List<Xs...> ul, List<Ys...> l) {
   auto X = head(ul);
   auto currentGroup = filter(l, [X](auto y) { return y == X; });

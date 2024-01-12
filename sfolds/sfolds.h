@@ -10,6 +10,7 @@ constexpr auto foldl(F, auto acc, List<>) {
 }
 
 template<typename F, auto... Xs>
+requires (is_unityped(Xs...))
 constexpr auto foldl(F f, auto acc, List<Xs...> l) {
   return foldl(f, f(acc, head(l)), tail(l));
 }
@@ -22,14 +23,15 @@ constexpr auto foldr(F, auto acc, List<>) {
 }
 
 template<typename F, auto... Xs>
+requires (is_unityped(Xs...))
 constexpr auto foldr(F f, auto acc, List<Xs...> l) {
   return foldr(f, f(acc, last(l)), init(l));
 }
 
 void test_foldr();
 
-template<auto... Xs> requires (BoolConvertible<decltype(Xs)> && ...)
-
+template<auto... Xs>
+requires ((BoolConvertible<decltype(Xs)> && ...) && is_unityped(Xs...))
 constexpr bool list_and(List<Xs...> l) {
   return foldr([](auto X, auto Y) { return X && Y; }, true, l);
 }
@@ -37,16 +39,16 @@ constexpr bool list_and(List<Xs...> l) {
 void test_list_and();
 
 
-template<auto... Xs> requires (BoolConvertible<decltype(Xs)> && ...)
-
+template<auto... Xs>
+requires ((BoolConvertible<decltype(Xs)> && ...) && is_unityped(Xs...))
 constexpr bool list_or(List<Xs...> l) {
   return foldr([](auto X, auto Y) { return X || Y; }, true, l);
 }
 
 void test_list_or();
 
-template<auto... Xs> requires (BoolConvertible<decltype(Xs)> && ...)
-
+template<auto... Xs>
+requires ((BoolConvertible<decltype(Xs)> && ...) && is_unityped(Xs...))
 constexpr bool list_any(List<Xs...> l) {
   return filter(l, [](auto X) { return X; }).length() != 0;
 }

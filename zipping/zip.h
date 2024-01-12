@@ -10,18 +10,19 @@ constexpr auto zip(List<> a, List<> b) {
 }
 
 template<auto... Xs>
+requires (is_unityped(Xs...))
 constexpr auto zip(List<Xs...> a, List<> b) {
   return List<>();
 }
 
 template<auto... Ys>
+requires (is_unityped(Ys...))
 constexpr auto zip(List<> a, List<Ys...> b) {
   return List<>();
 }
 
 template<auto... Xs, auto... Ys> requires (
-std::is_literal_type_v<decltype(Xs)> && ...) && (std::is_literal_type_v<decltype(Ys)> && ...)
-
+std::is_literal_type_v<decltype(Xs)> && ...) && (std::is_literal_type_v<decltype(Ys)> && ...) && (is_unityped(Xs..., Ys...))
 constexpr auto zip(List<Xs...> a, List<Ys...> b) {
   using FirstType = decltype(head(a));
   using SecondType = decltype(head(b));
@@ -31,7 +32,8 @@ constexpr auto zip(List<Xs...> a, List<Ys...> b) {
 }
 
 template<std::pair... Xs>
-constexpr auto unzip(List<Xs...> l)requires (sizeof... (Xs) > 0) {
+requires (sizeof... (Xs) > 0)
+constexpr auto unzip(List<Xs...> l) {
   if constexpr (l.length() > 1) {
     auto rem = unzip(tail(l));
     return std::make_pair(cons<head(l).first>(rem.first), cons<head(l).second>(rem.second));
@@ -46,7 +48,7 @@ constexpr auto zip_with(F, List<>, List<>) {
 }
 
 template<auto... Xs, auto... Ys, typename F>
-requires (sizeof... (Xs) == sizeof... (Ys))
+requires (sizeof... (Xs) == sizeof... (Ys)) && (is_unityped(Xs..., Ys...))
 constexpr auto zip_with(F f, List<Xs...> a, List<Ys...> b) {
   return List<f(head(a), head(b))>().append(zip_with(f, tail(a), tail(b)));
 }

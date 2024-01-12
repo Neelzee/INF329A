@@ -9,6 +9,7 @@ constexpr bool elem(List<>) {
 }
 
 template<auto Y, auto X, auto... Xs>
+requires (is_unityped(X, Xs...))
 constexpr bool elem(List<X, Xs...>) {
   if constexpr (Y == X) {
     return true;
@@ -20,7 +21,7 @@ constexpr bool elem(List<X, Xs...>) {
 void test_elem();
 
 template<typename F, auto... Xs>
-requires(sizeof...(Xs) > 0)
+requires(sizeof...(Xs) > 0 && is_unityped(Xs...))
 constexpr auto find(List<Xs...> l, F f) {
   auto fl = filter(l, f);
   if constexpr (fl.length() == 0) {
@@ -38,6 +39,7 @@ constexpr std::size_t findIndex(List<>) {
 }
 
 template<auto Y, auto X, auto... Xs>
+requires (is_unityped(Y, X, Xs...))
 constexpr std::size_t findIndex(List<X, Xs...>) {
   if constexpr (X == Y) {
     return 0;

@@ -14,7 +14,7 @@ constexpr auto arrayToList(const T (&array)[N]) {
 }
 
 template<typename T, std::size_t N, auto... Xs>
-requires (N > 0)
+requires (N > 0 && is_unityped(Xs...))
 constexpr auto atl(const T (&array)[N], List<Xs...> l) {
 
   T arr[N - 1];
@@ -27,6 +27,7 @@ constexpr auto atl(const T (&array)[N], List<Xs...> l) {
 }
 
 template<auto... Xs>
+requires (is_unityped(Xs...))
 constexpr auto listToArray(List<Xs...>) {
 
 }
@@ -37,6 +38,7 @@ constexpr auto lta(List<>, const T (&array)[N]) {
 }
 
 template<std::size_t N, auto... Xs, typename T>
+requires (is_unityped(Xs...))
 constexpr auto lta(List<Xs...> l, const T (&array)[N]) {
   T arr[N + 1];
 

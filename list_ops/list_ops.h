@@ -13,7 +13,7 @@ constexpr auto map(List<X>, F f) {
 }
 
 template<typename F, auto... Xs>
-requires (sizeof... (Xs) > 0 && (InvocableWith<F, decltype(Xs)> && ...))
+requires (sizeof... (Xs) > 0 && (InvocableWith<F, decltype(Xs)> && ...) && is_unityped(Xs...))
 constexpr auto map(List<Xs...> l, F f) {
   return List<f(head(l))>().append(map(tail(l), f));
 }
@@ -31,7 +31,7 @@ constexpr auto filter(List<X>, F f) {
 }
 
 template<typename F, auto X, auto... Xs>
-requires (sizeof... (Xs) > 0 && InvocableWith<F, decltype(X)>)
+requires (sizeof... (Xs) > 0 && InvocableWith<F, decltype(X)> && is_unityped(X, Xs...))
 constexpr auto filter(List<X, Xs...>, F f) {
   if constexpr (f(X)) {
     return List<X>().append(filter(List<Xs...>(), f));
@@ -43,6 +43,7 @@ constexpr auto filter(List<X, Xs...>, F f) {
 void test_filter();
 
 template<auto X, auto... Xs>
+requires (is_unityped(X, Xs...))
 constexpr auto head(List<X, Xs...>) {
   return X;
 }
@@ -55,7 +56,7 @@ constexpr auto last(List<X>) {
 }
 
 template<auto... Xs>
-requires (0 <= sizeof...(Xs))
+requires (0 <= sizeof...(Xs)) && (is_unityped(Xs...))
 constexpr auto last(List<Xs...> l) {
   return last(tail(l));
 }
@@ -63,6 +64,7 @@ constexpr auto last(List<Xs...> l) {
 void test_last();
 
 template<auto X, auto... Xs>
+requires (is_unityped(X, Xs...))
 constexpr auto tail(List<X, Xs...>) {
   return List<Xs...>();
 }
@@ -75,6 +77,7 @@ constexpr bool null(List<>) {
 }
 
 template<auto... Xs>
+requires (is_unityped(Xs...))
 constexpr bool null(List<Xs...>) {
   return false;
 }
@@ -82,7 +85,7 @@ constexpr bool null(List<Xs...>) {
 void test_null();
 
 template<std::size_t n, auto... Xs>
-requires (n <= sizeof...(Xs))
+requires (n <= sizeof...(Xs) && is_unityped(Xs...))
 constexpr auto get(List<Xs...> l) {
   if constexpr (n == 0) {
     return head(l);
@@ -100,7 +103,7 @@ constexpr auto reverse(List<> l) {
 void reverse_test();
 
 template<auto X, auto... Xs>
-requires (sizeof... (Xs) + 1 > 0)
+requires (sizeof... (Xs) + 1 > 0 && is_unityped(X, Xs...))
 constexpr auto reverse(List<X, Xs...> l) {
   return cons_append<X>(reverse(tail(l)));
 }
