@@ -1,10 +1,8 @@
-#include "div.h"
 #include "div2.h"
+#include "div.h"
 #include <iostream>
 
 void max_test() {
-  auto l1 = List<1, 2, 3>();
-  //auto res = list_max(l1);
 }
 
 void min_test() {

@@ -3,57 +3,32 @@
 
 #pragma once
 
-template<auto X, auto... Xs>
+template<auto X>
+constexpr auto list_max(List<X>) {
+  return X;
+}
+
+template <auto X, auto... Xs>
 requires (is_unityped(X, Xs...))
 constexpr auto list_max(List<X, Xs...> l) {
-  return max_helper<X>(l);
+  return list_max(drop_while([](auto Y){ return X > Y; }, l));
 }
 
 void max_test();
 
-template<auto M, auto X>
-constexpr auto max_helper(List<X>) {
-  if constexpr (X > M) {
-    return X;
-  } else {
-    return M;
-  }
+template<auto X>
+constexpr auto list_min(List<X>) {
+  return X;
 }
 
-template<auto M, auto X, auto... Xs>
-constexpr auto max_helper(List<X, Xs...> l) {
-  if constexpr (X > M) {
-    return max_helper<X>(l);
-  } else {
-    return max_helper<M>(l);
-  }
-}
-
-template<auto X, auto... Xs>
+template <auto X, auto... Xs>
 requires (is_unityped(X, Xs...))
-constexpr auto list_min(List<Xs...> l) {
-  return min_helper(l, X);
+constexpr auto list_min(List<X, Xs...> l) {
+  return list_min(drop_while([](auto Y){ return X < Y; }, l));
 }
 
 void min_test();
 
-template<auto X>
-constexpr auto min_helper(List<X> l, auto m) {
-  if constexpr (X < m) {
-    return X;
-  } else {
-    return m;
-  }
-}
-
-template<auto X, auto... Xs>
-constexpr auto min_helper(List<X, Xs...> l, auto m) {
-  if constexpr (X < m) {
-    return min_helper(l, X);
-  } else {
-    return min_helper(l, m);
-  }
-}
 
 template<auto... Xs>
 requires (is_unityped(Xs...) && 0 < sizeof... (Xs))
