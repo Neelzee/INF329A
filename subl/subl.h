@@ -23,7 +23,7 @@ constexpr auto take(List<X, Xs...> l) {
 void test_take();
 
 template<auto... Xs>
-requires (sizeof... (Xs) > 0 && is_unityped(Xs...))
+requires (sizeof... (Xs) > 0)
 constexpr auto init(List<Xs...> l) {
   return take<l.length() - 1>(l);
 }
